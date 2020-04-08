@@ -3,5 +3,6 @@
 pip install .
 jupyter nbextension     enable --py --sys-prefix appmode
 jupyter serverextension enable --py --sys-prefix appmode
+jupyter labextension install jupyterlab-dash@0.1.0-alpha.3
 
 #EOF
