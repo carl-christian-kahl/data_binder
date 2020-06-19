@@ -106,6 +106,8 @@ def clean(ctx, env_name=env_name, demofolder=demofolder):
     cmd = '{0!s} deactivate && conda remove --name {1!s} --all'
     ctx.run(cmd.format(source, env_name))
 
+    with open("talks.yml", 'r') as stream:
+        talks = yaml.load(stream)
     for t in talks:
         rmdir(t)
 
