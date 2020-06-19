@@ -95,24 +95,6 @@ def demofiles(ctx, clean=False, demofolder=demofolder):
     ctx.run('touch move_this_file.txt; mkdir move_it_here')
 
 
-@task
-def clean(ctx, env_name=env_name, demofolder=demofolder):
-    '''
-    Deletes both environment and demofolder
-    Args:
-    env_name: name of conda environment
-    demofolder: path to folder with demofiles
-    '''
-    cmd = '{0!s} deactivate && conda remove --name {1!s} --all'
-    ctx.run(cmd.format(source, env_name))
-
-    with open("talks.yml", 'r') as stream:
-        talks = yaml.load(stream)
-    for t in talks:
-        rmdir(t)
-
-    rmdir(demofolder)
-
 
 @task
 def r(ctx, env_name=env_name):
